@@ -8,7 +8,7 @@ import org.springframework.messaging.Message;
 @MessagingGateway
 public interface EmployeeGateway {
 
-    // ### Service Activator ###
+    // ##############################  SERVICE ACTIVATOR ##############################  //
     // GET call
     @Gateway(requestChannel = "request-emp-name-channel")
     String getEmployeeName(String name);
@@ -16,4 +16,11 @@ public interface EmployeeGateway {
     // POST call
     @Gateway(requestChannel = "request-hire-emp-channel")
     Message<Employee> hireEmployee(Employee name);
+
+    // ##############################  TRANSFORMER ############################## //
+    @Gateway(requestChannel = "emp-status-channel")
+    String processEmployeeStatus(String status);
+
+    @Gateway(requestChannel = "emp-salary-channel")
+    String processEmployeeSalary(String salary);
 }

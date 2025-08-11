@@ -18,6 +18,7 @@ public class EmployeeController {
         this.employeeGateway = employeeGateway;
     }
 
+    // ##############################  SERVICE ACTIVATOR ##############################  //
     @GetMapping(value = "{name}")
     public String getEmployeeName(@PathVariable("name") String name){
         return employeeGateway.getEmployeeName(name);
@@ -28,5 +29,16 @@ public class EmployeeController {
         Message<Employee> reply = employeeGateway.hireEmployee(employee);
         Employee empResponse = reply.getPayload();
         return empResponse;
+    }
+
+    // ##############################  TRANSFORMER ##############################  //
+    @GetMapping(value = "/processEmployeeStatus/{status}")
+    public String processEmployeeStatus(@PathVariable("status") String status){
+        return employeeGateway.processEmployeeStatus(status);
+    }
+
+    @GetMapping(value = "/processEmployeeSalary/{salary}")
+    public String processEmployeeSalary(@PathVariable("salary") String salary){
+        return employeeGateway.processEmployeeSalary(salary);
     }
 }
