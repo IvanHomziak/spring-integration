@@ -10,4 +10,5 @@ public class Employee {
     private int id;
     private String employeeName;
     private String employeeStatus;
+    private String employeeDepartment;
 }

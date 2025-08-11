@@ -18,7 +18,7 @@ public class EmployeeController {
         this.employeeGateway = employeeGateway;
     }
 
-    // ##############################  SERVICE ACTIVATOR ##############################  //
+    // ##############################  SERVICE ACTIVATOR  ##############################  //
     @GetMapping(value = "{name}")
     public String getEmployeeName(@PathVariable("name") String name){
         return employeeGateway.getEmployeeName(name);
@@ -31,7 +31,7 @@ public class EmployeeController {
         return empResponse;
     }
 
-    // ##############################  TRANSFORMER ##############################  //
+    // ##############################  TRANSFORMER  ##############################  //
     @GetMapping(value = "/processEmployeeStatus/{status}")
     public String processEmployeeStatus(@PathVariable("status") String status){
         return employeeGateway.processEmployeeStatus(status);
@@ -40,5 +40,23 @@ public class EmployeeController {
     @GetMapping(value = "/processEmployeeSalary/{salary}")
     public String processEmployeeSalary(@PathVariable("salary") String salary){
         return employeeGateway.processEmployeeSalary(salary);
+    }
+
+    // ##############################  SPLITTER  ############################## //
+    @GetMapping(value = "/getManagerList/{managers}")
+    public String getManagerList(@PathVariable("managers") String managers){
+        return employeeGateway.getManagersList(managers);
+    }
+
+    // ##############################  FILTER  ############################## //
+    @GetMapping(value = "/getEmployeeIfADeveloper/{empDesignation}")
+    public String getEmployeeIfADeveloper(@PathVariable("empDesignation") String empDesignation){
+        return employeeGateway.getEmployeeIfADeveloper(empDesignation);
+    }
+
+    // ##############################  ROUTER  ############################## //
+    @GetMapping(value = "/getEmployeeDepartment")
+    public String getEmployeeDepartment(@RequestBody Employee employee){
+        return employeeGateway.getEmployeeDepartment(employee);
     }
 }

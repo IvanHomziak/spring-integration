@@ -17,10 +17,22 @@ public interface EmployeeGateway {
     @Gateway(requestChannel = "request-hire-emp-channel")
     Message<Employee> hireEmployee(Employee name);
 
-    // ##############################  TRANSFORMER ############################## //
+    // ##############################  TRANSFORMER  ############################## //
     @Gateway(requestChannel = "emp-status-channel")
     String processEmployeeStatus(String status);
 
     @Gateway(requestChannel = "emp-salary-channel")
     String processEmployeeSalary(String salary);
+
+    // ##############################  SPLITTER  ############################## //
+    @Gateway(requestChannel = "emp-managers-channel")
+    String getManagersList(String managers);
+
+    // ##############################  FILTER  ############################## //
+    @Gateway(requestChannel = "dev-emp-channel")
+    String getEmployeeIfADeveloper(String empDesignation);
+
+    // ##############################  ROUTER  ############################## //
+    @Gateway(requestChannel = "emp-dept-channel")
+    String getEmployeeDepartment(Employee employee);
 }
