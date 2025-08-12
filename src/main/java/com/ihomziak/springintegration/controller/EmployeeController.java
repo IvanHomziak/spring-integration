@@ -59,4 +59,9 @@ public class EmployeeController {
     public String getEmployeeDepartment(@RequestBody Employee employee){
         return employeeGateway.getEmployeeDepartment(employee);
     }
+
+    @GetMapping(value = "/getSocialAccount")
+    public String getSocialAccount(@RequestBody Employee employee){
+        return employeeGateway.getSocialAccount(employee);
+    }
 }

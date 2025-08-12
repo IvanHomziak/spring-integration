@@ -11,4 +11,5 @@ public class Employee {
     private String employeeName;
     private String employeeStatus;
     private String employeeDepartment;
+    private String employeeSocialAccount;
 }

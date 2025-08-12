@@ -35,4 +35,7 @@ public interface EmployeeGateway {
     // ##############################  ROUTER  ############################## //
     @Gateway(requestChannel = "emp-dept-channel")
     String getEmployeeDepartment(Employee employee);
+
+    @Gateway(requestChannel = "social-account-channel")
+    String getSocialAccount(Employee employee);
 }
